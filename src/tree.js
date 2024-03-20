@@ -259,7 +259,6 @@ export default class Tree {
 
   rebalance() {
     const array = this.inOrder();
-    console.log(array);
     this.root = this.buildTree(array, 0, array.length - 1);
   }
 }
