@@ -230,4 +230,17 @@ export default class Tree {
     if (leftHeight > rightHeight) return leftHeight;
     return rightHeight;
   }
+
+  depth(value, node = this.root) {
+    if (node === null) return null;
+    if (node.data === value) return 0;
+    if (value < node.data) {
+      const leftDepth = 1 + this.depth(value, node.left);
+      return leftDepth;
+    }
+    if (value > node.data) {
+      const rightDepth = 1 + this.depth(value, node.right);
+      return rightDepth;
+    }
+  }
 }

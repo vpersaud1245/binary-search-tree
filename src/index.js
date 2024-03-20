@@ -37,3 +37,4 @@ function times2(number) {
 }
 console.log(tree.levelOrder(times2));
 console.log(tree.height(5));
+console.log(tree.depth(0));
