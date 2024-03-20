@@ -36,3 +36,6 @@ function times2(number) {
   return number * 2;
 }
 console.log(tree.levelOrder(times2));
+console.log(tree.preOrder());
+console.log(tree.inOrder());
+console.log(tree.postOrder());

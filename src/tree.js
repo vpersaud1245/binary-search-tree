@@ -174,6 +174,50 @@ export default class Tree {
     }
     return values;
   }
+
+  preOrder(callback = null) {
+    const values = [];
+    const traverse = (node) => {
+      if (node === null) return; // Terminate recursion if node is null
+      if (callback !== null) {
+        values.push(callback(node.data)); // Process node data if callback is provided
+      } else {
+        values.push(node.data); // Otherwise, just push node data
+      }
+      traverse(node.left); // Recursively traverse left subtree
+      traverse(node.right); // Recursively traverse right subtree
+    };
+    traverse(this.root);
+    return values;
+  }
+
+  inOrder(callback = null) {
+    const values = [];
+    const traverse = (node) => {
+      if (node === null) return; // Terminate recursion if node is null
+      traverse(node.left); // Recursively traverse left subtree
+      if (callback !== null)
+        values.push(callback(node.data)); // Process node data if callback is provided
+      else values.push(node.data); // Otherwise, just push node data
+      traverse(node.right); // Recursively traverse right subtree
+    };
+    traverse(this.root);
+    return values;
+  }
+
+  postOrder(callback = null) {
+    const values = [];
+    const traverse = (node) => {
+      if (node === null) return; // Terminate recursion if node is null
+      traverse(node.left); // Recursively traverse left subtree
+      traverse(node.right); // Recursively traverse right subtree
+      if (callback !== null)
+        values.push(callback(node.data)); // Process node data if callback is provided
+      else values.push(node.data); // Otherwise, just push node data
+    };
+    traverse(this.root);
+    return values;
+  }
 }
 
 // nln = findnln(5, 2)
