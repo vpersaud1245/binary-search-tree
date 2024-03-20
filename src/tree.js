@@ -218,7 +218,16 @@ export default class Tree {
     traverse(this.root);
     return values;
   }
-}
 
-// nln = findnln(5, 2)
-// nln = findlnl(5, 4)
+  height(value, node = this.find(value)) {
+    if (node === null) return null;
+    if (node.left === null && node.right === null) {
+      return 0;
+    }
+    const leftHeight = 1 + this.height(0, node.left);
+    const rightHeight = 1 + this.height(0, node.right);
+
+    if (leftHeight > rightHeight) return leftHeight;
+    return rightHeight;
+  }
+}
