@@ -38,3 +38,13 @@ function times2(number) {
 console.log(tree.levelOrder(times2));
 console.log(tree.height(5));
 console.log(tree.depth(0));
+console.log(tree.isBalanced());
+tree.insert(40);
+tree.prettyPrint();
+console.log(tree.isBalanced());
+tree.insert(41);
+tree.insert(41);
+tree.prettyPrint();
+console.log(tree.isBalanced());
+tree.rebalance();
+tree.prettyPrint();

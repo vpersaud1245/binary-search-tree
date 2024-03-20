@@ -50,7 +50,9 @@ export default class Tree {
   }
 
   insert(value) {
-    // Add condition for if value inserted is already in tree
+    if (this.find(value)) {
+      return;
+    }
     if (this.root === null) {
       this.root = new Node(value);
     }
@@ -242,5 +244,22 @@ export default class Tree {
       const rightDepth = 1 + this.depth(value, node.right);
       return rightDepth;
     }
+  }
+
+  isBalanced() {
+    if (
+      Math.abs(
+        this.height(this.root.left.data) - this.height(this.root.right.data),
+      ) > 1
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  rebalance() {
+    const array = this.inOrder();
+    console.log(array);
+    this.root = this.buildTree(array, 0, array.length - 1);
   }
 }
