@@ -159,6 +159,21 @@ export default class Tree {
 
     return nextLowestNode;
   }
+
+  levelOrder(callback = null, queue = [this.root]) {
+    const values = [];
+    while (queue.length > 0) {
+      const node = queue[0];
+      if (node.left !== null) queue.push(node.left);
+      if (node.right !== null) queue.push(node.right);
+      if (callback !== null) {
+        values.push(callback(queue.shift().data));
+      } else {
+        values.push(queue.shift().data);
+      }
+    }
+    return values;
+  }
 }
 
 // nln = findnln(5, 2)

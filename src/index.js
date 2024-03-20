@@ -32,3 +32,7 @@ tree.insert(1);
 tree.prettyPrint();
 tree.deleteItem(2);
 tree.prettyPrint();
+function times2(number) {
+  return number * 2;
+}
+console.log(tree.levelOrder(times2));
