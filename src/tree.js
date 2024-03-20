@@ -142,13 +142,24 @@ export default class Tree {
   }
 
   findNextLowestNode(value, node = this.find(value)) {
+    let nextLowestNode;
     if (node === null) return null;
+    // Return right node if original node has no left node
     if (node.data === value && node.left === null && node.right != null)
       return node.right;
-    if (node.left === null) {
+
+    if (node.data === value && node.left != null) {
+      nextLowestNode = this.findNextLowestNode(value, node.left);
+    }
+    if (node.data < value && node.right !== null) {
+      nextLowestNode = this.findNextLowestNode(value, node.right);
+    } else if (node.data < value && node.right === null) {
       return node;
     }
-    const nextLowestNode = this.findNextLowestNode(value, node.left);
+
     return nextLowestNode;
   }
 }
+
+// nln = findnln(5, 2)
+// nln = findlnl(5, 4)
